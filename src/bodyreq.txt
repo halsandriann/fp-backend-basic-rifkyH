@@ -1,0 +1,17 @@
+//1
+{
+  "id": 3,
+  "title": "catatan 3",
+  "body": "ini catatan 3",
+  "createdAt": "2022-12-17T17:51:19.932Z",
+  "updatedAt": "2022-12-17T17:51:19.932Z",
+}
+
+
+// 4
+{
+  "title": "ubah",
+  "body": "ubah",
+  "created_at": " ",
+  "updated_at": " "
+}
