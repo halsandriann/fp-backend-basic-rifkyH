@@ -13,7 +13,8 @@ app.use('/api', routes);
 const data = require('./data/example.js');
 
 app.get('/', (req, res) => {
-  res.sendFile('/data/example.js', { root: __dirname });
+  res.send('<h1>Argentina Menang</h1>');
+  //res.sendFile('/data/example.js', { root: __dirname });
 });
 
 //1. API dapat menyimpan catatan pada /data/example.js
@@ -104,21 +105,24 @@ app.put('/notes/:id', (req, res) => {
 });
 
 //5. API dapat menghapus catatan
+
 app.delete('/notes/:id', (req, res) => {
   const id = req.params.id;
-  const item = data.find((item) => item.id == id);
-  if (item !== -1) {
-    data.splice(item, 1);
-    res.status(200).send({
-      status: 'success',
-      message: 'Catatan berhasil dihapus',
-    });
-  } else {
-    res.status(404).send({
+  const index = data.findIndex((item) => item.id == id);
+
+  if (index === -1) {
+    return res.status(404).send({
       status: 'fail',
       message: 'Catatan tidak ditemukan',
     });
   }
+
+  data.splice(index, 1);
+
+  res.status(200).send({
+    status: 'success',
+    message: 'Catatan berhasil dihapus',
+  });
 });
 
 const PORT = 3000;
